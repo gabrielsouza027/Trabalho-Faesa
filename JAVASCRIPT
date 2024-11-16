@@ -1,0 +1,294 @@
+let products = [
+    // 10 Pizzas
+    { id: 1, name: 'Pizza Marguerita', category: 'pizzas', description: 'Tomate, mussarela, manjericão', price: 25.90, rating: 5, ratingCount: 100, image: 'https://s2-receitas.glbimg.com/wb7DIMyCpEyV07sTAtcDWD8HQjw=/0x0:1200x675/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2024/h/r/EfCbvqTbeDRAD3Lzc5xA/pizza-margherita.jpg' },
+    { id: 2, name: 'Pizza Calabresa', category: 'pizzas', description: 'Calabresa, cebola, mussarela', price: 30.90, rating: 4, ratingCount: 80, image: 'https://www.sabornamesa.com.br/media/k2/items/cache/513d7a0ab11e38f7bd117d760146fed3_XL.jpg' },
+    { id: 3, name: 'Pizza Frango com Catupiry', category: 'pizzas', description: 'Frango desfiado, catupiry, milho', price: 32.90, rating: 4, ratingCount: 75, image: 'https://www.sabornamesa.com.br/media/k2/items/cache/ada34cd2101afafaba465aad112ee3c1_XL.jpg' },
+    { id: 4, name: 'Pizza Portuguesa', category: 'pizzas', description: 'Presunto, ovos, azeitonas, mussarela', price: 28.90, rating: 5, ratingCount: 90, image: 'https://receitasde.com.br/wp-content/uploads/2024/07/Pizza-Portuguesa.jpg' },
+    { id: 5, name: 'Pizza Quatro Queijos', category: 'pizzas', description: 'Mussarela, parmesão, gorgonzola, provolone', price: 35.90, rating: 5, ratingCount: 110, image: 'https://redefoodservice.com.br/wp-content/uploads/2023/07/Pizza-Quatro-Queijos.jpg' },
+    { id: 6, name: 'Pizza Vegetariana', category: 'pizzas', description: 'Tomate, cogumelos, abobrinha, pimentão', price: 29.90, rating: 4, ratingCount: 60, image: 'https://www.receiteria.com.br/wp-content/uploads/receitas-de-pizza-vegetariana-00.jpeg' },
+    { id: 7, name: 'Pizza Peperoni', category: 'pizzas', description: 'Peperoni, molho de tomate, mussarela', price: 33.90, rating: 4, ratingCount: 85, image: 'https://www.minhareceita.com.br/app/uploads/2022/12/pizza-de-pepperoni-caseira-portal-minha-receita.jpg' },
+    { id: 8, name: 'Pizza Bacon', category: 'pizzas', description: 'Bacon crocante, molho barbecue, queijo', price: 38.90, rating: 4, ratingCount: 95, image: 'https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3279516:1663453038/Pizza-de-bacon.jpeg?f=default&$p$f=b8b6fb9' },
+    { id: 9, name: 'Pizza Margherita', category: 'pizzas', description: 'Mussarela, tomate, manjericão fresco', price: 24.90, rating: 5, ratingCount: 100, image: 'https://s2-receitas.glbimg.com/wb7DIMyCpEyV07sTAtcDWD8HQjw=/0x0:1200x675/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2024/h/r/EfCbvqTbeDRAD3Lzc5xA/pizza-margherita.jpg' },
+    { id: 10, name: 'Pizza de Carne Seca', category: 'pizzas', description: 'Carne seca, queijo coalho, cebola', price: 36.90, rating: 4, ratingCount: 70, image: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjbFicGJCe3jZXZXPhw30DaiAiR0Qqfhz9FJVkFDqWnfJfIR1dSvAYYKet83yA52kQZTNgOD5keUK_F7WqaZKJmaHkcTgQuHpfHZw7Jh8JVgzbpsH-oqOLF5XWZxvrp4o2OVc687jjoEcWQ6IFkKidwzR_aWR7sQoqBEdacz4lVlpy-xTM-eluGpoVlj0/s1600/receita-de-pizza-de-carne-seca-catupiri.jpg' },
+
+    // 10 Hambúrgueres
+    { id: 11, name: 'Hambúrguer Clássico', category: 'hamburgers', description: 'Carne de boi, queijo, alface, tomate, maionese', price: 20.90, rating: 5, ratingCount: 150, image: 'https://www.cnnbrasil.com.br/viagemegastronomia/wp-content/uploads/sites/5/2022/05/mafe-estudio-LV2p9Utbkbw-unsplash.jpg' },
+    { id: 12, name: 'Hambúrguer Bacon', category: 'hamburgers', description: 'Carne de boi, bacon, queijo cheddar, alface', price: 23.90, rating: 4, ratingCount: 100, image: 'https://www.estadao.com.br/resizer/v2/L3LYN5Y4MRG6BB47MNHEEXDRGA.jpeg?quality=80&auth=c4f56563b2c83e506971bce35dbc505a5ecdf7d89a70d2f2c5fbb8b0c7071e5f&width=1200&height=1200&smart=true' },
+    { id: 13, name: 'Hambúrguer Vegano', category: 'hamburgers', description: 'Hambúrguer vegetal, alface, tomate, molho especial', price: 19.90, rating: 4, ratingCount: 80, image: 'https://www.sabornamesa.com.br/media/k2/items/cache/acbf17dca076404b2078b0d4b135530d_XL.jpg' },
+    { id: 14, name: 'Hambúrguer Cheddar', category: 'hamburgers', description: 'Carne de boi, queijo cheddar, cebola caramelizada', price: 22.90, rating: 5, ratingCount: 120, image: 'https://temperonapanela.com.br/wp-content/uploads/28_05-blog.png' },
+    { id: 15, name: 'Hambúrguer com Ovo', category: 'hamburgers', description: 'Carne de boi, ovo frito, queijo, alface', price: 24.90, rating: 4, ratingCount: 95, image: 'https://images.mrcook.app/recipe-image/0190a3c8-c2ac-7bdf-80c1-475c06925fbc' },
+    { id: 16, name: 'Hambúrguer de Frango', category: 'hamburgers', description: 'Frango grelhado, queijo, alface, molho agridoce', price: 22.90, rating: 4, ratingCount: 70, image: 'https://claudia.abril.com.br/wp-content/uploads/2020/01/hambc3barguer-de-frango-lauripatterson.jpg' },
+    { id: 17, name: 'Hambúrguer Especial', category: 'hamburgers', description: 'Carne de boi, queijo brie, cogumelos salteados', price: 29.90, rating: 5, ratingCount: 90, image: 'https://conteudo.imguol.com.br/45/2018/07/17/mao-santa-burguer-1531851949973_v2_900x506.jpg' },
+    { id: 18, name: 'Hambúrguer de Costela', category: 'hamburgers', description: 'Costela desfiada, cebola, molho barbecue', price: 26.90, rating: 4, ratingCount: 100, image: 'https://ogimg.infoglobo.com.br/in/22318020-42b-a9d/FT1086A/HOB_Costela-BBQ_Credito-Ezio-Philot-e-Vinicius-Oliveira-1.jpg' },
+    { id: 19, name: 'Hambúrguer Steak', category: 'hamburgers', description: 'Carne de boi, queijo, bacon, maionese picante', price: 28.90, rating: 5, ratingCount: 130, image: 'https://i.pinimg.com/736x/32/b1/e9/32b1e996e154219ce61ad20c224ab391.jpg' },
+    { id: 20, name: 'Hambúrguer Gourmet', category: 'hamburgers', description: 'Carne de boi, queijo gouda, cebola roxa, molho especial', price: 31.90, rating: 5, ratingCount: 115, image: 'https://www.queijosaovicente.com.br/wp-content/uploads/2024/04/hamburguer-queijo-azul-scaled.jpg' },
+
+    // 10 Salgados
+    { id: 21, name: 'Coxinha', category: 'salgados', description: 'Frango desfiado, empanado', price: 6.90, rating: 5, ratingCount: 150, image: 'https://www.cnnbrasil.com.br/viagemegastronomia/wp-content/uploads/sites/5/2023/02/coxinha-g772e5ca7a_1920.jpg' },
+    { id: 22, name: 'Pastel de Carne', category: 'salgados', description: 'Carne moída, queijo, massa crocante', price: 5.90, rating: 4, ratingCount: 120, image: 'https://receitasdepesos.com.br/wp-content/uploads/2024/01/pastel-de-carne-moida.jpg.webp' },
+    { id: 23, name: 'Kibe', category: 'salgados', description: 'Carne de boi, trigo para kibe, temperos', price: 7.90, rating: 4, ratingCount: 110, image: 'https://s2-receitas.glbimg.com/h48Qgiiiw2YLrR2aNest-qorMyY=/0x0:1280x853/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/G/t/A6JRYYTaAx8A4AjLdjFA/kibe-1-.jpeg' },
+    { id: 24, name: 'Bolinho de Bacalhau', category: 'salgados', description: 'Bacalhau desfiado, batata, temperos', price: 9.90, rating: 5, ratingCount: 150, image: 'https://www.estadao.com.br/resizer/v2/LBYK7E6XNZFCFGWDKITI2C7SXU.jpg?quality=80&auth=178f92df95175519d0afada9a8f39ea424c18fccfd19a11d0ec4d0f1697ce926&width=720&height=503&smart=true' },
+    { id: 25, name: 'Enroladinho de Presunto e Queijo', category: 'salgados', description: 'Presunto, queijo, massa folhada', price: 7.90, rating: 4, ratingCount: 100, image: 'https://www.minhareceita.com.br/app/uploads/2022/08/enroladinho-de-salsicha-portal-minha-receita-2.jpg' },
+    { id: 26, name: 'Rissois de Camarão', category: 'salgados', description: 'Camarão, molho bechamel, empanado', price: 8.90, rating: 5, ratingCount: 80, image: 'https://i.ytimg.com/vi/H5njhxXe-Mc/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBCqRm3BjwVVqIrHQ0lmiP8R08UyA' },
+    { id: 27, name: 'Esfiha de Carne', category: 'salgados', description: 'Carne moída, tomate, cebola', price: 5.90, rating: 4, ratingCount: 130, image: 'https://blog.biglar.com.br/wp-content/uploads/2022/10/iStock-537521984-1.jpeg' },
+    { id: 28, name: 'Coxinha de Frango com Catupiry', category: 'salgados', description: 'Frango e catupiry, empanado', price: 7.50, rating: 4, ratingCount: 120, image: 'https://salgadosparavender.com.br/wp-content/uploads/2024/05/coxinha-de-frango-com-catupiry.webp' },
+    { id: 29, name: 'Empanada', category: 'salgados', description: 'Carne, queijo, temperos', price: 6.90, rating: 5, ratingCount: 100, image: 'https://s2-receitas.glbimg.com/a1LCuW8dSyfYwb5cjVGVLJMVYoE=/0x0:3000x2000/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f540e0b94d8437dbbc39d567a1dee68/internal_photos/bs/2021/V/d/g6Wa7TQ5q0z1CyIO8TWA/uruguai-132-of-189-.jpg' },
+    { id: 30, name: 'Bolinho de Mandioca', category: 'salgados', description: 'Mandioca, carne seca', price: 6.50, rating: 4, ratingCount: 70, image: 'https://guiadacozinha.com.br/wp-content/uploads/2019/10/bolinho-mandioca-carne-mo%C3%ADda.jpg' },
+
+    // 10 Bebidas
+    { id: 31, name: 'Coca-Cola', category: 'bebidas', description: 'Refrigerante de cola', price: 5.00, rating: 4, ratingCount: 200, image: 'https://images.tcdn.com.br/img/img_prod/1115696/coca_cola_lata_220ml_11_1_f92e9b64840da2cb6a6da37ca150e390.jpg' },
+    { id: 32, name: 'Guaraná Antarctica', category: 'bebidas', description: 'Refrigerante de guaraná', price: 5.50, rating: 4, ratingCount: 180, image: 'https://cdn.awsli.com.br/2500x2500/1330/1330028/produto/51587137/a19f18b3f5.jpg' },
+    { id: 33, name: 'Fanta Laranja', category: 'bebidas', description: 'Refrigerante sabor laranja', price: 4.90, rating: 4, ratingCount: 150, image: 'https://coopsp.vtexassets.com/arquivos/ids/217707/7894900030396.jpg?v=637919540565270000' },
+    { id: 34, name: 'Água Mineral', category: 'bebidas', description: 'Água sem gás', price: 2.50, rating: 5, ratingCount: 220, image: 'https://www.paodeacucar.com/img/uploads/1/132/11825132.jpg' },
+    { id: 35, name: 'Suco de Laranja', category: 'bebidas', description: 'Suco natural de laranja', price: 6.00, rating: 5, ratingCount: 130, image: 'https://zaffari.vtexassets.com/arquivos/ids/252685/1000060-00.jpg?v=638578794693970000' },
+    { id: 36, name: 'Cerveja', category: 'bebidas', description: 'Cerveja gelada', price: 9.00, rating: 4, ratingCount: 160, image: 'https://static.paodeacucar.com/img/uploads/1/396/12150396.jpg' },
+    { id: 37, name: 'Suco de Uva', category: 'bebidas', description: 'Suco natural de uva', price: 6.50, rating: 5, ratingCount: 140, image: 'https://diawine.agilecdn.com.br/24189_1.jpg' },
+    { id: 38, name: 'Pepsi', category: 'bebidas', description: 'Refrigerante de cola', price: 5.00, rating: 4, ratingCount: 100, image: 'https://mambodelivery.vtexassets.com/arquivos/ids/215094-800-450?v=638551927216000000&width=800&height=450&aspect=true' },
+    { id: 39, name: 'Coca-Cola Zero', category: 'bebidas', description: 'Refrigerante de cola sem açúcar', price: 5.20, rating: 5, ratingCount: 110, image: 'https://sumidasushi.com.br/wp-content/uploads/cocazero.png' },
+    { id: 40, name: 'Água com Gás', category: 'bebidas', description: 'Água com gás', price: 3.00, rating: 4, ratingCount: 90, image: 'https://cdn.shoppub.io/cdn-cgi/image/w=1000,h=1000,q=80,f=auto/beirario/media/uploads/produtos/foto/b423e29c11557file.png' }
+];
+// Carrinho
+let cart = [];
+// Função de ordenação dos produtos
+function sortProducts() {
+    const filterValue = document.getElementById('price-filter').value;
+
+    let sortedProducts;
+
+    switch (filterValue) {
+        case 'price-asc':
+            sortedProducts = [...products].sort((a, b) => a.price - b.price);
+            break;
+        case 'price-desc':
+            sortedProducts = [...products].sort((a, b) => b.price - a.price);
+            break;
+        case 'rating-asc':
+            sortedProducts = [...products].sort((a, b) => a.rating - b.rating);
+            break;
+        case 'rating-desc':
+            sortedProducts = [...products].sort((a, b) => b.rating - a.rating);
+            break;
+        default:
+            sortedProducts = products;
+    }
+
+    // Exibe os produtos ordenados
+    displayProducts(sortedProducts);
+}
+
+// Carregar os produtos inicialmente
+window.onload = function() {
+    displayProducts(products); // Exibe os produtos inicialmente
+};
+
+// Função para filtrar os produtos por categoria
+function filterCategory(category) {
+    const filteredProducts = products.filter(product => product.category === category);
+    displayProducts(filteredProducts);
+}
+
+
+// Função para exibir os itens no carrinho
+function updateCart() {
+    const cartItemsList = document.getElementById('cart-items');
+    cartItemsList.innerHTML = ''; // Limpa o carrinho
+    let total = 0;
+    cart.forEach(item => {
+        let cartItem = document.createElement('li');
+        cartItem.innerHTML = `${item.name} - R$ ${item.price.toFixed(2)}`;
+        cartItemsList.appendChild(cartItem);
+        total += item.price;
+    });
+    document.getElementById('total-price').innerText = total.toFixed(2);
+}
+
+// Função para abrir o modal do carrinho
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'none' || !cartModal.style.display ? 'block' : 'none';
+}
+
+// Função para fechar o carrinho
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+// Função para ir para o checkout
+function checkout() {
+    const checkoutModal = document.getElementById('checkout-modal');
+    checkoutModal.style.display = 'block';
+}
+
+// Função para fechar o checkout
+function closeCheckout() {
+    document.getElementById('checkout-modal').style.display = 'none';
+}
+
+// Função de busca
+function searchProducts() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+    displayProducts(filteredProducts);
+}
+
+// Exibindo os produtos por padrão
+displayProducts(products);
+
+// Função para gerar as estrelas de avaliação
+function generateRatingStars(rating) {
+    const fullStars = Math.floor(rating); // Quantidade de estrelas cheias
+    const emptyStars = 5 - fullStars; // Quantidade de estrelas vazias
+
+    // Gerar as estrelas cheias e vazias
+    let stars = '';
+    for (let i = 0; i < fullStars; i++) {
+        stars += '⭐'; // Estrela cheia
+    }
+    for (let i = 0; i < emptyStars; i++) {
+        stars += '☆'; // Estrela vazia
+    }
+    return stars; // Retorna a string de estrelas
+}
+
+// Função que exibe os produtos
+function displayProducts(productsToDisplay) {
+    const productContainer = document.getElementById('all');
+    productContainer.innerHTML = ''; // Limpa os produtos antes de adicionar novos
+
+    productsToDisplay.forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        
+        // HTML para exibir o produto
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <h3>${product.name}</h3>
+            <p>Preço: R$ ${product.price.toFixed(2)}</p>
+            <p>Avaliação: ${generateRatingStars(product.rating)}</p> <!-- Exibe as estrelas -->
+            <button class="add-to-cart" onclick="addToCart(${product.id})" id="add-btn-${product.id}">Adicionar ao Carrinho</button>
+        `;
+
+        productContainer.appendChild(productElement);
+    });
+}
+
+// Função para filtrar produtos por categoria
+function filterCategory(category) {
+    if (category === 'all') {
+        displayProducts(products);
+    } else {
+        const filteredProducts = products.filter(product => product.category === category);
+        displayProducts(filteredProducts);
+    }
+}
+
+// Função para adicionar produto ao carrinho
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+        // Verificar se o produto já está no carrinho
+        const existingProduct = cart.find(p => p.id === productId);
+        if (existingProduct) {
+            // Se já estiver no carrinho, aumentar a quantidade
+            existingProduct.quantity++;
+        } else {
+            // Se não estiver, adicionar o produto com quantidade 1
+            product.quantity = 1; // Adicionando quantidade 1 ao produto
+            cart.push(product);
+        }
+
+        // Atualizar contagem no carrinho
+        document.getElementById('cart-count').innerText = cart.length;
+        updateCart();
+
+        // Desabilitar o botão de adicionar para esse produto
+        disableAddButton(productId);
+    }
+}
+
+
+
+// Função para atualizar o carrinho
+function updateCart() {
+    const cartItemsList = document.getElementById('cart-items');
+    const cartCount = document.getElementById('cart-count');
+    const totalPrice = document.querySelector('.total');
+
+    cartItemsList.innerHTML = ''; // Limpar a lista de itens do carrinho
+    let total = 0;
+    cart.forEach(item => {
+        const cartItem = document.createElement('li');
+        cartItem.innerHTML = `${item.name} - R$ ${item.price.toFixed(2)} x ${item.quantity}`;
+        cartItemsList.appendChild(cartItem);
+        total += item.price * item.quantity; // Somar o valor do produto no carrinho, levando em conta a quantidade
+    });
+
+    cartCount.textContent = cart.length; // Atualizar o número de itens no carrinho
+    totalPrice.textContent = `Total: R$ ${total.toFixed(2)}`; // Atualizar o valor total do carrinho
+}
+
+// Função para abrir/fechar o carrinho
+function toggleCart() {
+    const cartModal = document.getElementById('cart-modal');
+    cartModal.style.display = cartModal.style.display === 'none' || !cartModal.style.display ? 'block' : 'none';
+}
+
+// Função para fechar o carrinho
+function closeCart() {
+    document.getElementById('cart-modal').style.display = 'none';
+}
+
+// Função para iniciar o checkout
+function checkout() {
+    const checkoutModal = document.getElementById('checkout-modal');
+    checkoutModal.style.display = 'block';
+}
+
+// Função para fechar o checkout
+function closeCheckout() {
+    document.getElementById('checkout-modal').style.display = 'none';
+}
+
+// Função para mostrar a confirmação do pedido
+function showConfirmation(event) {
+    event.preventDefault();
+    document.getElementById("checkout-form").style.display = "none";
+    document.getElementById("order-confirmation").style.display = "block";
+
+    setTimeout(function() {
+        resetCart();  // Resetar carrinho após a confirmação
+        closeCheckout();
+    }, 1000);
+
+    setTimeout(function() {
+        closeCart();
+    }, 1000);
+}
+
+// Função para limpar o carrinho
+function resetCart() {
+    cart = [];
+    document.getElementById('cart-count').innerText = cart.length;
+    updateCart();  // Atualizar visualmente o carrinho
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.disabled = false;
+        button.innerText = "Adicionar ao Carrinho";  // Reabilita os botões de adicionar
+    });
+}
+
+// Função de busca de produtos
+function searchProducts() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(query));
+    displayProducts(filteredProducts);
+}
+
+// Inicializar os produtos ao carregar a página
+window.onload = function() {
+    displayProducts(products);
+};
+
+// Inicializar modais com display 'none'
+document.getElementById('cart-modal').style.display = 'none';
+document.getElementById('checkout-modal').style.display = 'none';
+document.getElementById('order-confirmation').style.display = 'none';
