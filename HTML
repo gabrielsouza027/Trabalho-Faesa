@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Much</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">
+            <img src="https://yt3.googleusercontent.com/1UmTj6T5LBlBM9lAHld1Vqth8RwlYcx8KW-2IQ8xubyWYcw4BBEFLhxZPak0JiJlFzGcDVq67Dk=s900-c-k-c0x00ffffff-no-rj" alt="Logo Delivery">
+        </div>
+        <div class="nav">
+            <input type="text" id="search-bar" placeholder="Pesquise seu prato..." onkeyup="searchProducts()">
+            <button class="catalog-btn" onclick="filterCategory('all')">Todos</button>
+            <button class="catalog-btn" onclick="filterCategory('pizzas')">Pizzas</button>
+            <button class="catalog-btn" onclick="filterCategory('salgados')">Salgados</button>
+            <button class="catalog-btn" onclick="filterCategory('hamburgers')">Hamburgues</button>
+            <button class="catalog-btn" onclick="filterCategory('bebidas')">Bebidas</button>
+            <button  img class="cart-btn"  onclick="toggleCart()">Carrinho (<span id="cart-count">0</span>)  <img src="https://images.vexels.com/content/200097/preview/shopping-cart-icon-shopping-cart-2f1cbe.png ", height="15px" width="20px" alt=""></button>
+        </div>
+        
+    </header>
+
+    <!-- Conteúdo -->
+    <main>
+
+        <!-- Filtro de Ordenação -->
+<div class="filter-container">
+    <label for="price-filter">Ordenar por:</label>
+    <select id="price-filter" onchange="sortProducts()">
+        <option value="price-asc">Menor Preço</option>
+        <option value="price-desc">Maior Preço</option>
+        <option value="rating-asc">Menos Avaliados</option>
+        <option value="rating-desc">Mais Avaliados</option>
+    </select>
+</div>
+
+        <div id="all" class="product-container">
+            <!-- Produtos serão exibidos aqui -->
+        </div>
+        
+        <!-- Carrinho -->
+<div id="cart-modal" class="cart-modal">
+    <div class="cart-content">
+        <h2>Seu Carrinho</h2>
+        <ul id="cart-items">
+            <!-- Itens serão adicionados  -->
+        </ul>
+        <p class="total">Total: R$ 0.00</p>
+        <button onclick="checkout()">Finalizar Compra</button>
+        <button onclick="closeCart()">Fechar Carrinho</button>
+        <button onclick="resetCart()">Limpar Carrinho</button>
+        
+    </div>
+</div>
+<!-- Modal Checkout -->
+<div id="checkout-modal" class="checkout-modal">
+    <div class="checkout-content">
+        <h2>Informações de Entrega</h2>
+        <form id="checkout-form" onsubmit="showConfirmation(event)">
+            <label for="name">Nome Completo</label>
+            <input type="text" id="name" name="name" placeholder="Seu nome" required>
+
+            <label for="address">Endereço</label>
+            <input type="text" id="address" name="address" placeholder="Seu endereço" required>
+
+            <label for="city">Cidade</label>
+            <input type="text" id="city" name="city" placeholder="Sua cidade" required>
+
+            <label for="zip">CEP</label>
+            <input type="text" id="zip" name="zip" placeholder="Seu CEP" required>
+
+            <label for="payment">Método de pagamento</label>
+            <select id="payment" name="payment" required>
+                <option value="credit">Cartão de Crédito</option>
+                <option value="debit">Cartão de Débito</option>
+                <option value="paypal">PayPal</option>
+            </select>
+
+            <button type="submit">Confirmar Pedido</button>
+            <button type="button" class="back-btn" onclick="closeCheckout()">Voltar ao Carrinho</button>
+        </form>
+
+        <!-- Mensagem de confirmação -->
+        <div id="order-confirmation" class="order-confirmation" style="display: none;">
+            Pedido em preparo
+        </div>
+    </div>
+</div>
+
+</div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="social-media">
+            <a href="https://wa.me/1234567890" target="_blank">
+                <img src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN" alt="WhatsApp" width="40">
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png" alt="Instagram" width="40">
+                <span>Instagram</span>
+            </a>
+        </div>
+        <div class="address">
+            <p>Endereço: Rua Antoni Romario, 123 - Bairro Cristal Fontina, Cidade Rio de Janeiro</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
